@@ -213,7 +213,7 @@ namespace codegen {
              .mValue = static_cast<uint32_t>(value),
              .mSectionNumber = static_cast<int16_t>(sectionIndex + 1),
              .mType = 0,
-             .mStorageClass = isGlobal ? IMAGE_SYM_CLASS_EXTERNAL : 0,
+             .mStorageClass = isGlobal ? IMAGE_SYM_CLASS_EXTERNAL : (uint8_t)0,
              .mNumberOfAuxSymbols = 0,
 
              .mExternal = false,

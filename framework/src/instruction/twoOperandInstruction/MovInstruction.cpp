@@ -170,6 +170,7 @@ namespace instruction
                 }
             }
 
+            codegen::Section labelSection = relLhs->getLabel()->getSection(builder);
             if (labelSection != section)
                 relLhs->getLabel()->reloc(builder, section, codegen::OperandSize::Long, offset, relLhs->getDisplacement().value_or(0));
         }

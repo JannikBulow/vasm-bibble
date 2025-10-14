@@ -69,6 +69,7 @@ namespace instruction
             {
                 codegen::REX rex = regRhs->getRex();
                 if (regRhs->isExtended()) rex |= codegen::REX::R;
+                if (regRhs->getSize() == codegen::OperandSize::Quad) rex |= codegen::REX::W;
 
                 int instructionSize = 7;
                 if (regRhs->getSize() == codegen::OperandSize::Long) instructionSize = 6;

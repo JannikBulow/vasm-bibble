@@ -130,6 +130,8 @@ namespace instruction
                 }
 
                 int displacement = relLhs->getLabel()->getValue(builder, section).first - builder.getPosition(section) - instructionSize + relLhs->getDisplacement().value_or(0);
+                codegen::Section labelSection = relLhs->getLabel()->getSection(builder);
+                if (labelSection != section) displacement = 0;
 
                 switch(instruction.getSize())
                 {
@@ -168,7 +170,6 @@ namespace instruction
                 }
             }
 
-            codegen::Section labelSection = relLhs->getLabel()->getSection(builder);
             if (labelSection != section)
                 relLhs->getLabel()->reloc(builder, section, codegen::OperandSize::Long, offset, relLhs->getDisplacement().value_or(0));
         }
@@ -181,6 +182,8 @@ namespace instruction
             if (regLhs->getSize() == codegen::OperandSize::Long) instructionSize = 6;
 
             int displacement = relRhs->getLabel()->getValue(builder, section).first - builder.getPosition(section) - instructionSize + relRhs->getDisplacement().value_or(0);
+            codegen::Section labelSection = relRhs->getLabel()->getSection(builder);
+			if (labelSection != section) displacement = 0;
 
             switch(regLhs->getSize())
             {
@@ -221,7 +224,6 @@ namespace instruction
                     break; // Unreachable
             }
 
-            codegen::Section labelSection = relRhs->getLabel()->getSection(builder);
             if (labelSection != section)
                 relRhs->getLabel()->reloc(builder, section, codegen::OperandSize::Long, -4, relRhs->getDisplacement().value_or(0));
         }

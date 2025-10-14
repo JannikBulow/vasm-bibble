@@ -261,6 +261,10 @@ namespace codegen {
     
     [[nodiscard]] std::pair<std::uint64_t, bool> PEFormat::getSymbol(const std::string& name) const
     {
+        if (mSymbolIndices.find(name) == mSymbolIndices.end())
+        {
+            return std::make_pair(-1, false);
+        }
         auto& sym = mSymbolTable[mSymbolIndices.at(name)];
         return std::make_pair(sym.mValue, sym.mExternal);
     }

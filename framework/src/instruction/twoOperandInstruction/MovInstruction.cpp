@@ -74,6 +74,8 @@ namespace instruction
                 if (regRhs->getSize() == codegen::OperandSize::Long) instructionSize = 6;
 
                 int displacement = relLhs->getLabel()->getValue(builder, section).first - builder.getPosition(section) - instructionSize + relLhs->getDisplacement().value_or(0);
+                codegen::Section labelSection = relLhs->getLabel()->getSection(builder);
+                if (labelSection != section) displacement = 0;
 
                 switch(regRhs->getSize())
                 {

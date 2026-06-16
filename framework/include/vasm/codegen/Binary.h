@@ -43,6 +43,7 @@ namespace codegen
 
         void print(std::ostream& stream) override;
         std::unique_ptr<unsigned char[]> loadjit();
+        void loadjitInto(unsigned char* buffer, size_t* size);
     private:
         std::vector<unsigned char> mBuffer;
         std::unordered_map<std::string, std::uint64_t> mSymbols;

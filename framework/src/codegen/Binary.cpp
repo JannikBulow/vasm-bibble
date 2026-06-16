@@ -148,4 +148,14 @@ namespace codegen
         std::copy(mBuffer.begin(), mBuffer.end(), ret.get());
         return ret;
     }
+
+    void BinaryFormat::loadjitInto(unsigned char* buffer, size_t* size) {
+        if (!buffer && size) {
+            *size = mBuffer.size();
+            return;
+        }
+        
+        std::copy(mBuffer.begin(), mBuffer.end(), buffer);
+        if (size) *size = mBuffer.size();
+    }
 }

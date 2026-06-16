@@ -2,6 +2,9 @@
 CMakeFiles/
 out/
 .vs/
+.idea/
+
+cmake*/
 
 *.cmake
 *.o

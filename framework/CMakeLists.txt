@@ -99,10 +99,12 @@ set(HEADERS
 
 source_group(TREE ${PROJECT_SOURCE_DIR} FILES ${SOURCES} ${HEADERS})
 
-add_library(vasm-framework-vasm-framework ${SOURCES} ${HEADERS})
+add_library(vasm-framework-vasm-framework STATIC ${SOURCES} ${HEADERS})
 add_library(vasm::framework ALIAS vasm-framework-vasm-framework)
 target_include_directories(vasm-framework-vasm-framework
     PUBLIC
         include
 )
 target_compile_features(vasm-framework-vasm-framework PUBLIC cxx_std_20)
+
+set_property(TARGET vasm-framework-vasm-framework PROPERTY POSITION_INDEPENDENT_CODE ON)

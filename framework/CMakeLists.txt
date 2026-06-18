@@ -9,10 +9,8 @@ set(SOURCES
 
 
     "src/codegen/Binary.cpp"
-    "src/codegen/Elf.cpp"
-	"src/codegen/Pe.cpp"
 
-    "src/codegen/builder/OpcodeBuilder.cpp"
+	"src/codegen/builder/OpcodeBuilder.cpp"
     "src/codegen/builder/Instruction.cpp"
     "src/codegen/builder/ModRM.cpp"
 
@@ -55,10 +53,8 @@ set(HEADERS
     "include/vasm/codegen/IOutputFormat.h"
     "include/vasm/codegen/Opcodes.h"
     "include/vasm/codegen/Binary.h"
-    "include/vasm/codegen/Elf.h"
-	"include/vasm/codegen/Pe.h"
 
-    "include/vasm/codegen/builder/OpcodeBuilder.h"
+	"include/vasm/codegen/builder/OpcodeBuilder.h"
     "include/vasm/codegen/builder/Instruction.h"
     "include/vasm/codegen/builder/ModRM.h"
 
